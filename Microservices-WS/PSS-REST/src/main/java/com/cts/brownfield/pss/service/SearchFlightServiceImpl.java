@@ -18,6 +18,11 @@ public class SearchFlightServiceImpl implements SearchFlightService {
 	@Autowired
 	private FlightRepository flightRepository;
 	
+	public double getFare(String flightNumber,LocalDate flightDate) {
+		Flight flight=flightRepository.findByFlightNumberAndFlightDate(flightNumber, flightDate);
+		return flight.getFares().getFare();
+	}
+	
 	
 	public List<Flight> saveAll(List<Flight> flights) {
 		return flightRepository.saveAll(flights);

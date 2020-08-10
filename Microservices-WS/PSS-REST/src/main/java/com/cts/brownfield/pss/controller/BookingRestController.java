@@ -92,6 +92,12 @@ public class BookingRestController {
 	public Fares findFareById(@PathVariable("id") long id) {
 		return fareService.getFareById(id);
 	}
+	
+	@GetMapping("/fare/getFare/{flightNumber}/{flightDate}")
+	public double findFareByFlightNumberAndFlightDate(@PathVariable("flightNumber") String flightNumber,@PathVariable("flightDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate flightDate) {
+		return flightService.getFare(flightNumber, flightDate);
+	}
+
 
 	@GetMapping("/find/{origin}/{destination}/{flightDate}/{numberofPassengers}")
 	public List<Flight> listSearchedFlights(@PathVariable("origin") String origin,

@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 import com.cts.brownfield.pss.entity.Flight;
 
 public interface SearchFlightService {
+	public double getFare(String flightNumber,LocalDate flightDate);
 	
 	public List<Flight> saveAll(List<Flight> flights);
 	
