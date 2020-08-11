@@ -22,7 +22,7 @@ public class Receiver {
 		return new Queue("InventoryQ", false);
 	}
 	
-	//@RabbitListener(queues = "InventoryQ")
+	@RabbitListener(queues = "InventoryQ")
     public void processMessage(Map<String,Object> fare) {
         System.out.println("===========> ==== <===========");
 		System.out.println(fare);
