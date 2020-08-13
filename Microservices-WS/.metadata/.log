@@ -2055,3 +2055,18 @@ java.lang.InterruptedException
 	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
 	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
 	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-12 17:03:06.642
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.OCHLnQQs
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-12 17:03:06.643
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.OCHLnQQs
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-12 17:03:06.643
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-12 17:03:06.644
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.OCHLnQQs => OK
+
+!ENTRY org.eclipse.ui 2 2 2020-08-12 17:03:07.104
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)

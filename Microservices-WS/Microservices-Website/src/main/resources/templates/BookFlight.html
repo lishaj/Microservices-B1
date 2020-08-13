@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>www.flybrownfield.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8" />
+
+</head>
+<body>
+
+
+
+
+	<div align="center" class="row">
+		<a th:href="@{/}">Home</a> | <a th:href="@{/search}">Search</a> | <a
+			th:href="@{/checkin}">CheckIn</a>| <a th:href="@{/regForm}">Register</a>
+		| <a th:href="@{/loginForm}">Login</a>
+
+	</div>
+	<div th:with="passengers=${numberofPassengers}"></div>
+
+	<hr width="50%" />
+	<div align="center" class="form-style-8">
+		<h2>Flight Information</h2>
+
+
+
+		<table border="1">
+			<thead>
+				<tr>
+
+					<th>Flight</th>
+					<th>From</th>
+					<th>To</th>
+					<th>Date</th>
+					<th>Time</th>
+					<th>Duration</th>
+					<th>Fare</th>
+					<th>Total Fare</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td th:text="${uidata.selectedFlight.flightNumber}" />
+					<td th:text="${uidata.selectedFlight.origin}" />
+					<td th:text="${uidata.selectedFlight.destination}" />
+					<td th:text="${uidata.selectedFlight.flightDate}" />
+					<td th:text="${uidata.selectedFlight.flightTime}" />
+					<td th:text="${uidata.selectedFlight.duration}" />
+					<td th:text="${uidata.selectedFlight.fare}" />
+					<td th:text="${uidata.selectedFlight.fare } * ${numberofPassengers}" />
+
+
+				</tr>
+			</tbody>
+		</table>
+
+		<hr width="50%" />
+		<h3>Primary Passenger Information</h3>
+		<form
+			th:action="@{/bookFlight(id=${uidata.selectedFlight.id},numberofPassengers=${numberofPassengers})}"
+			th:object="${uidata}" method="post">
+
+			<table align="center">
+
+				<tr>
+
+					<td>Mobile Number:</td>
+					<td><input type="number" th:field="*{passenger.mobileNumber}"></td>
+
+					<td>Email Address</td>
+					<td><input type="email" th:field="*{passenger.emailAddress}"></td>
+
+
+
+					<td>First Name<input type="text"
+						th:field="*{passenger.firstName}" /></td>
+					<td>Last Name</td>
+					<td><input type="text" th:field="*{passenger.lastName}" /></td>
+
+
+					<td>Gender</td>
+					<td><input type="radio" th:field="*{passenger.gender}"
+						th:value="Male">Male <input type="radio"
+						th:field="*{passenger.gender}" th:value="Female">Female</td>
+
+				</tr>
+				
+			</table>
+
+			<hr width="60%" />
+
+			<div th:if="${numberofPassengers >=2}">
+				<table>
+
+					<th:block
+						th:each="i,state: ${#numbers.sequence(0, numberofPassengers-2)}">
+						<tr>
+							<th>Passenger <span th:text="${state.count+1}"></span>:
+							</th>
+							<td>First Name<input type="text"
+								th:name="passenger.coPassengers[__${state.index}__].firstName" /></td>
+							<td>Last Name</td>
+							<td><input type="text"
+								th:name="passenger.coPassengers[__${state.index}__].lastName" /></td>
+							<td>Gender</td>
+							<td><input type="radio"
+								th:name="passenger.coPassengers[__${state.index}__].gender"
+								th:value="Male">Male <input type="radio"
+								th:name="passenger.coPassengers[__${state.index}__].gender"
+								th:value="Female">Female</td>
+
+						</tr>
+					</th:block>
+					</div>
+					<tr>
+						<th colspan="10"><input type="submit" value="Book" /></th>
+					</tr>
+				</table>
+				<hr width="50%" />
+		</form>
+
+	</div>
+
+
+
+
+
+
+</body>
+</html>

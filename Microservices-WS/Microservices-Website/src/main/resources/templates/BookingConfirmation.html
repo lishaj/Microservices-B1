@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>www.flybrownfield.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8" />
+
+</head>
+<body>
+
+	<div align="center">
+		<a th:href="@{/}">Home</a> | <a th:href="@{/search}">Search</a> | <a
+			th:href="@{/checkin}">CheckIn</a> | <a th:href="@{/regForm}">Register</a>
+		| <a th:href="@{/loginForm}">Login</a>
+
+	</div>
+	<div th:with="passengers=${numberofPassengers}"></div>
+
+	<hr width="50%" />
+	<div align="center" class="form-style-8">
+		<h2>Flight Information</h2>
+
+
+
+		<table border="1">
+			<thead>
+				<tr>
+
+					<th>Flight</th>
+					<th>From</th>
+					<th>To</th>
+					<th>Date</th>
+					<th>Time</th>
+					<th>Duration</th>
+					<th>Fare</th>
+					<th>Total Fare</th>
+
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+
+					<td th:text="${flight.flightNumber}" />
+					<td th:text="${flight.origin}" />
+					<td th:text="${flight.destination}" />
+					<td th:text="${flight.flightDate}" />
+					<td th:text="${flight.flightTime}" />
+					<td th:text="${flight.duration}" />
+					<td th:text="${flight.fares.fare}" />
+					<td style="text-align: center"
+						th:text="${flight.fares.fare } * ${numberofPassengers}" />
+
+
+				</tr>
+			</tbody>
+		</table>
+
+		<hr width="50%" />
+		<h2>Primary Passenger</h2>
+
+
+		<table align="center" border="1">
+
+			<thead>
+				<tr>
+
+					<th>Passenger Name</th>
+					<th>Gender</th>
+					<th>Mobile</th>
+					<th>Email</th>
+					<th>Booking Id</th>
+
+				</tr>
+
+			</thead>
+			<tbody>
+				<tr>
+
+					<td  th:text="${passenger.firstName }+' '+${passenger.lastName}" />
+					<td th:text="${passenger.gender}" />
+					<td th:text="${passenger.mobileNumber}" />
+					<td th:text="${passenger.emailAddress}" />
+					<td style="text-align: center"
+						th:text="${passenger.bookingRecord.bookingId}" />
+
+
+				</tr>
+			</tbody>
+
+
+		</table>
+
+		<br />
+
+		<div th:if="${numberofPassengers >=2}">
+			<h2>Co-Passengers</h2>
+			<table border="1">
+				<thead>
+					<tr>
+						<th>S.No</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Gender</th>
+
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr th:each="coPassenger,stats : ${passenger.coPassengers}">
+						<td style="text-align: center" th:text="${stats.count}">1</td>
+						<td th:text="${coPassenger.firstName}" />
+						<td th:text="${coPassenger.lastName}" />
+						<td th:text="${coPassenger.gender}" />
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+
+
+	</div>
+
+
+
+
+</body>
+</html>
