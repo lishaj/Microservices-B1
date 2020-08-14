@@ -22,6 +22,7 @@ import com.cts.brownfield.pss.service.SearchService;
 @RestController
 @RequestMapping("/api/pss")
 @CrossOrigin
+@RefreshScope
 public class SearchRestController {
 
 	@Autowired
@@ -31,10 +32,17 @@ public class SearchRestController {
 	private String originAirportShutdownList;
 
 	@PostMapping("/findFlights")
+
 	public List<Flight> searchFlights(@RequestBody SearchQuery searchQuery) {
 
-		System.out.println(">>>>>>>>>>>   <<<<<<<<<<<< "+originAirportShutdownList);
+		System.out.println(">>>>>>>>>>> Airport Name: " + originAirportShutdownList);
 		System.out.println(searchQuery);
+
+		if (Arrays.asList(originAirportShutdownList.split(",")).contains(searchQuery.getOrigin())) {
+			System.out.println("The origin airport " + searchQuery.getOrigin() + "  is in shutdown state");
+			return new ArrayList<Flight>();
+		}
+
 		return searchService.search(searchQuery);
 	}
 
