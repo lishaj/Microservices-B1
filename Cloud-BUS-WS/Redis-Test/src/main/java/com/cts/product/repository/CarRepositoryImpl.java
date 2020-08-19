@@ -33,6 +33,9 @@ public class CarRepositoryImpl {
 
 	public void clear(String user) {
 		System.out.println("USR Name::::: "+user);
-		template.delete(user);
+		//System.out.println(template.);
+		template.getStringSerializer().serialize(user);
+		
+		//template.delete(user);
 	}
 }
