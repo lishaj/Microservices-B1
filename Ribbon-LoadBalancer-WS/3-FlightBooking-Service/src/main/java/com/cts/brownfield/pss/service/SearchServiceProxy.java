@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.cts.brownfield.pss.entity.Flight;
 
 //@FeignClient(name = "search-service", url = "http://localhost:8082/api/pss")
-@FeignClient(name="search-service")
-@RibbonClient
+@FeignClient(name="search-service") // http://search-proxy/api/pss/1024
+@RibbonClient(name="search-proxy")
 public interface SearchServiceProxy {
-	@GetMapping("/findFlight/{id}")
-	Flight findFlight(@PathVariable("id") long id);
+	@GetMapping(value = "/api/pss/findFlight/{id}")
+	Flight findFlight(@PathVariable long id);
+	
 }

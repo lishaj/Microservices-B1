@@ -34,6 +34,7 @@ public class SearchRestController {
 	@PostMapping("/findFlights")
 
 	public List<Flight> searchFlights(@RequestBody SearchQuery searchQuery) {
+		System.out.println(">>>> >>>>  <<<<< <<<<<< ::: Search-Service-3:  ");
 
 		System.out.println(">>>>>>>>>>> Airport Name: " + originAirportShutdownList);
 		System.out.println(searchQuery);
@@ -48,6 +49,8 @@ public class SearchRestController {
 
 	@GetMapping("/findFlight/{id}")
 	public Flight findFlight(@PathVariable("id") long id) {
+		System.out.println(">>>> >>>>  <<<<< <<<<<< ::: Search-Service-3:  "+id);
+
 		System.out.println(">>>>>>>>>>> Airport Name: " + originAirportShutdownList);
 
 		return searchService.findByFlightId(id);

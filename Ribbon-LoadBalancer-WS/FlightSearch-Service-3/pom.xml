@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.cts</groupId>
-	<artifactId>2-FlightSearch-Service</artifactId>
+	<artifactId>FlightSearch-Service-3</artifactId>
 	<version>1</version>
-	<name>2-FlightSearch-Service</name>
+	<name>FlightSearch-Service-3</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

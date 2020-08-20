@@ -18,7 +18,7 @@ import com.cts.brownfield.pss.entity.Fares;
 import com.cts.brownfield.pss.entity.Flight;
 import com.cts.brownfield.pss.entity.Passenger;
 
-@EnableFeignClients
+//@EnableFeignClients
 @Service
 public class BookingServiceImpl implements BookingService {
 
@@ -44,18 +44,30 @@ public class BookingServiceImpl implements BookingService {
 		Fares fare = null;
 		Flight flight = null;
 		BookingRecord bookingRecord = null;
+		System.out.println("::::: In bookFLight ::: "+id);
 
 		try {
+			
+
+			System.out.println(">>>> :::::: <<<<<< FARE:: "+fareServiceProxy);
+			System.out.println(">>>> :::::: <<<<<< Searh:: "+searchServiceProxy);
 
 			fare=fareServiceProxy.getFare(id);
+			System.out.println(">>>> :::::: <<<<<< FARE - OBJ:: "+fare);
+
 			//fare = restTemplate.getForObject(FARESURL + "/getFare/" + id, Fares.class);
+			
 			flight=searchServiceProxy.findFlight(id);
+			
+			System.out.println(">>>> :::::: <<<<<< Searh-OBJ :: "+flight);
+
+			
 			//flight = restTemplate.getForObject(FINDFLIGHT + "/findFlight/" + id, Flight.class);
 
 			System.out.println("=====> Fare: " + fare);
 			System.out.println("Flight: " + flight);
 		} catch (Exception e) {
-			System.out.println("Fares Service is Not Available");
+			System.out.println("Fares Service is Not Available .. "+e);
 		}
 
 		if (flight.getInventory().getCount() < numberOfPassengers) {

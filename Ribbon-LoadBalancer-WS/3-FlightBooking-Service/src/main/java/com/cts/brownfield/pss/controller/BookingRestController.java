@@ -33,6 +33,8 @@ public class BookingRestController {
 	public Passenger bookFlight(@RequestBody Passenger passenger, @PathVariable("id") long id,
 			@PathVariable("numberofPassengers") int numberofPassengers) {
 		System.out.println(">>>>>  Coupon Code :::::: " + couponCode);
+		System.out.println(">> :: Flight-ID:: "+id+" >> Number of Passengers:: "+numberofPassengers);
+
 		Passenger bookedPassenger = bookingService.bookFlight(passenger, id, numberofPassengers);
 		List<CoPassenger> coPassengers = passenger.getCoPassengers();
 
